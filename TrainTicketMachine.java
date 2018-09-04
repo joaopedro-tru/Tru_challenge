@@ -93,6 +93,8 @@ public class TrainTicketMachine{
 			//check if there are valid stations, updating the table with suggestions and highlithed letters (with '')
 			stationValid(name, station_list, table);
 			
+			printTable(table);
+			
 			//clean table for new search
 			formatTable(table, dict);
 			
@@ -106,23 +108,26 @@ public class TrainTicketMachine{
     		// tabela[x][6] -> coluna das sugestões
     		for (i=0; i < station_list.size(); i++){
     			j = 0;
-			if (name.toUpperCase().equals(station_list.get(i).substring(0,name.length()))){
-				while(j < 6){
-					if(table[j][6].equals("")){
-						table[j][6] = station_list.get(i);
-						matches += 1; //incrementador para limpar no fim da pesquisa
-						j = 6;
+    			if(name.length()<=station_list.get(i).length()){
+				if (name.toUpperCase().equals(station_list.get(i).substring(0,name.length()))){
+					while(j < 6){
+						if(table[j][6].equals("")){
+							table[j][6] = station_list.get(i);
+							matches += 1; //incrementador para limpar no fim da pesquisa
+							j = 6;
+						}
+						else{
+							j++;
+						}						
 					}
-					else{
-						j++;
-					}						
+					// If input = station, no letters are suggested
+					if(name.length() != station_list.get(i).length()){
+						String letter = String.valueOf(station_list.get(i).charAt(name.length()));
+						updateTableLetter(table, letter);
+					}
 				}
-				String letter = String.valueOf(station_list.get(i).charAt(name.length()));
-				updateTableLetter(table, letter);
 			}
 		}
-		//Imprimir tabela updated
-		printTable(table);
 
     	}
     	
