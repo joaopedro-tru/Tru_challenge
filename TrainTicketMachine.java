@@ -78,7 +78,7 @@ public class TrainTicketMachine{
 		
 		while(exit == false){
 			
-			System.out.println("	':q' to exit!	");	
+			System.out.println(" Press ':q' to exit!	");	
 			System.out.print("Input: ");
 			
 			//read Input
