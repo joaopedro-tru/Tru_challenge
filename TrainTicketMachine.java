@@ -94,7 +94,7 @@ public class TrainTicketMachine{
 			stationValid(name, station_list, table);
 			
 			//clean table for new search
-			formatTable(tabela, dict);
+			formatTable(table, dict);
 			
 		}
 	}
